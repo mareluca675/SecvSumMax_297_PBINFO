@@ -1,0 +1,42 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int start, s = -1, smax = -2000000, i, dr, st, n, v[100001];
+    
+int main()
+{
+    ifstream fin("secvsummax.in");
+    ofstream fout("secvsummax.out");
+    
+    fin >> n;
+    
+    for(i = 1; i <= n; i++)
+    {
+        fin >> v[i];
+    }
+    
+    for(i = 1; i <= n; i++)
+    {
+        
+        if(s < 0)
+        {
+            s = 0;
+            start = i;
+        }
+        
+        s = s + v[i];
+        
+        if(s > smax)
+        {
+            st = start;
+            dr = i;
+            smax = s;
+        }
+    }
+    
+    fout << st << " " << dr;
+
+    return 0;
+}
